@@ -2,30 +2,30 @@
 {
     public class Usuario
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string NombreUsuario { get; set; }
-        public string Contraseña { get; set; }
-        public string Mail { get; set; }
+        public long id { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string nombreUsuario { get; set; }
+        public string contrasenia { get; set; }
+        public string mail { get; set; }
 
         public Usuario()
         {
-            Id = 0;
-            Nombre = "";
-            Apellido = "";
-            NombreUsuario = "";
-            Contraseña = "";
-            Mail = "";
+            id = 0;
+            nombre = "";
+            apellido = "";
+            nombreUsuario = "";
+            contrasenia = "";
+            mail = "";
         }
-        public Usuario(int id, string nombre, string apellido, string nombreUsuario, string contraseña, string mail)
+        public Usuario(long id, string nombre, string apellido, string nombreUsuario, string contrasenia, string mail)
         {
-            Id = id;
-            Nombre = nombre;
-            Apellido = apellido;
-            NombreUsuario = nombreUsuario;
-            Contraseña = contraseña;
-            Mail = mail;
+            this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.nombreUsuario = nombreUsuario;
+            this.contrasenia = contrasenia;
+            this.mail = mail;
         }
     }
 }

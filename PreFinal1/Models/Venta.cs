@@ -2,21 +2,23 @@
 {
     public class Venta
     {
-        public int Id { get; set; }
-        public string Comentarios { get; set; }
-        public int IdUsuario { get; set; }
+        public long id { get; set; }
+        public string comentarios { get; set; }
+        public long idUsuario { get; set; }
+
 
         public Venta()
         {
-            Id = 0;
-            Comentarios = "";
-            IdUsuario = 0;
+            id = 0;
+            comentarios = "";
+            idUsuario = 0;
         }
-        public Venta(int id, string comentarios, int idUsuario)
+
+        public Venta(long id, string comentarios, long idUsuario)
         {
-            Id = id;
-            Comentarios = comentarios;
-            IdUsuario = idUsuario;
+            this.id = id;
+            this.comentarios = comentarios;
+            this.idUsuario = idUsuario;
         }
     }
 }

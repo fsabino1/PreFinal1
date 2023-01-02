@@ -11,17 +11,50 @@ namespace PreFinal1.Controllers
     {
         private ProductoVendidoHandler handler = new ProductoVendidoHandler();
 
-        [HttpGet]
-        public ActionResult<List<ProductoVendido>> Get()
+        [HttpPost]
+        public ActionResult Post([FromBody] ProductoVendido productoV)
         {
             try
             {
-                List<ProductoVendido> lista = handler.GetProductosVendidos();
+                ProductoVendido productoVendido = handler.cargarProductosVendidos(productoV);
+                return StatusCode(StatusCodes.Status201Created, productoVendido);
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+        //eliminar producto vendido desde IdVenta
+        [HttpDelete]
+        public ActionResult Delete([FromBody] long idVta)
+        {
+            try
+            {
+                bool seElimino = handler.eliminarProductoVendido(idVta);
+                if (seElimino)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Problem(ex.Message);
+            }
+        }
+        [HttpGet]//listo productos
+        public ActionResult<List<ProductoVendido>> Get(long idVenta)
+        {
+            try
+            {
+                List<ProductoVendido> lista = handler.obtenerProdVendidoIdVta(idVenta);
                 return Ok(lista);
             }
             catch (Exception ex)
             {
-
                 return Problem(ex.Message);
             }
         }

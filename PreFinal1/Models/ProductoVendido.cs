@@ -2,24 +2,27 @@
 {
     public class ProductoVendido
     {
-        public int Id { get; set; }
-        public int Stock { get; set; }
-        public int IdProducto { get; set; }
-        public int IdVenta { get; set; }
+        public long id { get; set; }
+        public long idProducto { get; set; }
+        public int stock { get; set; }
+        public long idVenta { get; set; }
+
 
         public ProductoVendido()
         {
-            Id = 0;
-            Stock = 0;
-            IdProducto = 0;
-            IdVenta = 0;
+            id = 0;
+            idProducto = 0;
+            stock = 0;
+            idVenta = 0;
+
         }
-        public ProductoVendido(int id, int stock, int idProducto, int idVenta)
+        public ProductoVendido(long id, long idProducto, int stock, long idVenta)
         {
-            Id = id;
-            Stock = stock;
-            IdProducto = idProducto;
-            IdVenta = idVenta;
+            this.id = id;
+            this.idProducto = idProducto;
+            this.stock = stock;
+            this.idVenta = idVenta;
+
         }
     }
 }

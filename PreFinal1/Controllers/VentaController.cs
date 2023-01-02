@@ -7,23 +7,42 @@ namespace PreFinal1.Controllers
 {
     [ApiController]
     [Route("Api/[controller]")]
-    public class VentaController : ControllerBase
+    public class VentaController : Controller
     {
-        private VentaHandler handler = new VentaHandler();
-
-        [HttpGet]
-        public ActionResult<List<Venta>> Get()
+        private VentaRepository repository = new VentaRepository();
+        // Agregar Venta
+        [HttpPost]
+        public ActionResult Post([FromBody] Venta venta)
         {
             try
             {
-                List<Venta> lista = handler.GetVenta();
-                return Ok(lista);
+                Venta ventaCreado = repository.cargarVenta(venta);
+                return StatusCode(StatusCodes.Status201Created, ventaCreado);
             }
             catch (Exception ex)
             {
-
+                return Problem(ex.Message);
+            }
+        }
+        // Eliminar Venta
+        [HttpDelete]
+        public ActionResult Delete([FromBody] long id)
+        {
+            try
+            {
+                bool seElimino = repository.eliminarVenta(id);
+                if (seElimino)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
                 return Problem(ex.Message);
             }
         }
     }
-}
